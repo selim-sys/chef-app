@@ -1,3 +1,4 @@
+import 'package:chefapp/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,10 @@ class CustomTextFormField extends StatelessWidget {
           border: OutlineInputBorder(
               borderSide: BorderSide(color: Color(0XFF9D9FA0)),
               borderRadius: BorderRadius.circular(8)
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: kPrimaryColor),
+              borderRadius: BorderRadius.circular(8),
           ),
           label: Text(label),
           contentPadding: EdgeInsets.all(16),

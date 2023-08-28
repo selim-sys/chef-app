@@ -1,4 +1,5 @@
 import 'package:chefapp/constants.dart';
+import 'package:chefapp/screens/register-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,9 @@ class LoginScreen extends StatelessWidget {
                         fontSize: 16,
                         color: Colors.grey,
                       ),),
-                      TextButton(onPressed: (){}, child: Text('Sign Up',style: TextStyle(
+                      TextButton(onPressed: (){
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => RegisterScreen(),));
+                      }, child: Text('Sign Up',style: TextStyle(
                         color: kPrimaryColor,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w600,
