@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key, required this.text,
+   CustomButton({
+    super.key, required this.text, this.onPressed,
   });
   final String text;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(text,style: TextStyle(
           fontFamily: 'Poppins',
           fontSize: 24,
