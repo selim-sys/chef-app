@@ -1,6 +1,5 @@
+import 'package:chefapp/constants/colors.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class CustomButton extends StatelessWidget {
    CustomButton({
@@ -16,11 +15,12 @@ class CustomButton extends StatelessWidget {
       child: Text(text,style: TextStyle(
           fontFamily: 'Poppins',
           fontSize: 24,
-          fontWeight: FontWeight.w700
+          fontWeight: FontWeight.w700,
+          color: Colors.white
       ),),
       style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: kPrimaryColor,
+          backgroundColor: MyColors.mainColor,
           minimumSize: Size(double.infinity, 42),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8)

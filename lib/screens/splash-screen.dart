@@ -1,4 +1,5 @@
-import 'package:chefapp/constants.dart';
+import 'package:chefapp/constants/assets.dart';
+import 'package:chefapp/constants/colors.dart';
 import 'package:chefapp/screens/choose_language_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,8 +16,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(Duration(seconds: 2),(){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ChooseLanguageScreen(),));
+    Future.delayed(const Duration(seconds: 2),(){
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const ChooseLanguageScreen(),));
     },);
   }
   @override
@@ -27,19 +28,19 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: MyColors.mainColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/image47.png'),
-            SizedBox(height: 16,),
-            Text(
+            Image.asset(MyAssets.logo),
+            const SizedBox(height: 16,),
+            const Text(
               'Chef App',
               style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.w700,
-                  fontFamily: kPrimaryFont),
+              ),
             ),
           ],
         ),

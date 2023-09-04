@@ -1,6 +1,6 @@
-import 'package:chefapp/constants.dart';
+import 'package:chefapp/constants/assets.dart';
+import 'package:chefapp/screens/login-screen.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/language_button.dart';
 
 class ChooseLanguageScreen extends StatelessWidget {
@@ -10,7 +10,7 @@ class ChooseLanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           image: DecorationImage(
             fit: BoxFit.cover,
@@ -20,24 +20,24 @@ class ChooseLanguageScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/image47.png'),
-            SizedBox(height: 16,),
-            Text('Welcome to Chef App',style: TextStyle(
-              fontFamily: kPrimaryFont,
+            Image.asset(MyAssets.logo),
+            const SizedBox(height: 16,),
+            const Text('Welcome to Chef App',style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w700
             ),),
-            SizedBox(height: 54,),
-            Text('Please choose your language',style: TextStyle(
-                fontFamily: kPrimaryFont,
+            const SizedBox(height: 54,),
+            const Text('Please choose your language',style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w400
             ),),
-            SizedBox(height: 120,),
+            const SizedBox(height: 120,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                LanguageButton(text: 'English', onTap: (){}),
+                LanguageButton(text: 'English', onTap: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
+                }),
                 LanguageButton(text: 'العربية',onTap: (){},),
               ],
             )

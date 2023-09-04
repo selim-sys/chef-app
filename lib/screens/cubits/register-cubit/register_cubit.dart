@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'login_state.dart';
+part 'register_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
-
-  LoginCubit get(context) => BlocProvider.of(context);
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit() : super(RegisterInitial());
+  RegisterCubit get(context) => BlocProvider.of(context);
 
   var formKey = new GlobalKey<FormState>();
 
@@ -20,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   changePasswordVisibility(){
     isOb = !isOb;
-    emit(LoginChangePasswordVisibility());
+    emit(RegisterChangePasswordVisibility());
   }
 
 }
