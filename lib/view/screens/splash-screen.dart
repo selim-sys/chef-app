@@ -1,6 +1,6 @@
-import 'package:chefapp/constants/assets.dart';
-import 'package:chefapp/constants/colors.dart';
-import 'package:chefapp/screens/choose_language_screen.dart';
+import 'package:chefapp/view/constants/assets.dart';
+import 'package:chefapp/view/constants/colors.dart';
+import 'package:chefapp/view/screens/choose_language_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

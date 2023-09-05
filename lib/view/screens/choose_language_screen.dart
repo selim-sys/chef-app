@@ -1,6 +1,7 @@
-import 'package:chefapp/constants/assets.dart';
-import 'package:chefapp/screens/login-screen.dart';
+import 'package:chefapp/view/constants/assets.dart';
+import 'package:chefapp/view/screens/auth/login-screen.dart';
 import 'package:flutter/material.dart';
+
 import '../widgets/language_button.dart';
 
 class ChooseLanguageScreen extends StatelessWidget {
