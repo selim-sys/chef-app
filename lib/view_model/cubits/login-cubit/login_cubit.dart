@@ -25,16 +25,27 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginChangePasswordVisibility());
   }
 
-  void Login({
+  void login({
     required String email,
     required String password
   })async{
+    emit(LoginLoading());
     var data = {
       'email' : email,
       'password' : password
     };
-    await DioHelper.postData(endPoint: EndPoints.loginEndpoint, data: data).then((value) {
-      return null;
+    await DioHelper.postData(endPoint: EndPoints.loginEndpoint,
+        data: data)
+        .then((value) {
+          debugPrint(value.data.toString());
+          var userAccessToken = value.data['token'].toString();
+          debugPrint('Token ----> $userAccessToken');
+          debugPrint('SUCCESS');
+          emit(LoginSuccess());
+    }).catchError((e){
+      debugPrint(onError.toString());
+      debugPrint('FAIL');
+      emit(LoginFailure(e));
     });
 
 }

@@ -4,6 +4,7 @@ import 'package:chefapp/view/screens/auth/register-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../constants/data.dart';
 import '../../../view_model/cubits/login-cubit/login_cubit.dart';
 import '../../widgets/custom-button.dart';
@@ -35,15 +36,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       fit: BoxFit.cover,
                       image: AssetImage(MyAssets.top)),
                 ),
-                child: const Column(
+                child:  Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 92.0),
+                      padding: EdgeInsets.symmetric(vertical: 92.0).w,
                       child: Text(
                         'Welcome Back',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 32,
+                            fontSize: 32.sp,
                             fontWeight: FontWeight.w700),
                       ),
                     )
@@ -51,12 +52,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0).w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 103,
+                     SizedBox(
+                      height: 103.h,
                     ),
                     CustomTextFormField(
                       textEditingController: loginCubit.emailController,
@@ -75,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                     },
                     ),
-                    const SizedBox(
-                      height: 32,
+                     SizedBox(
+                      height: 32.h,
                     ),
                     CustomTextFormField(
                       textEditingController: loginCubit.passwordController,
@@ -109,29 +110,29 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: Color(0XFFB5B7B8)),
                       ),
                     ),
-                    const SizedBox(height: 64,),
+                     SizedBox(height: 64.h,),
                     CustomButton(text: 'Sign in',onPressed: (){
                       if(loginCubit.formKey.currentState!.validate()){
-
+                        loginCubit.login(email: loginCubit.emailController.text, password: loginCubit.passwordController.text);
                       }
                     },),
-                    const SizedBox(height: 72,),
+                     SizedBox(height: 72.h,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Don\'t have an account?',style: TextStyle(
+                         Text('Don\'t have an account?',style: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           color: Colors.grey,
                         ),),
                         TextButton(onPressed: (){
                           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => RegisterScreen(),));
-                        }, child: const Text('Sign Up',style: TextStyle(
+                        }, child:  Text('Sign Up',style: TextStyle(
                           color: MyColors.mainColor,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                         ),))
                       ],
                     )

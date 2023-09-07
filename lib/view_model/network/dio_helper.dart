@@ -9,7 +9,7 @@ class DioHelper{
       BaseOptions(
         baseUrl: EndPoints.baseUrl,
         headers: {
-          'Accept': 'application/json'
+          'Accept': 'application/json',
         }
       ),
     );
@@ -19,8 +19,7 @@ class DioHelper{
     Map<String, dynamic>? queryParameters,
     String? token,
     ProgressCallback? onReceiveProgress
-
-}) async {
+  }) async {
     try{
        dio.options.headers = {};
        final Response response = await dio.get(

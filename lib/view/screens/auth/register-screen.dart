@@ -9,19 +9,18 @@ import '../../constants/data.dart';
 import '../../widgets/custom-button.dart';
 import '../../widgets/custom-textformfield.dart';
 
-
 class RegisterScreen extends StatefulWidget {
-   const RegisterScreen({super.key});
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
   @override
   Widget build(BuildContext context) {
-    RegisterCubit registerCubit = BlocProvider.of<RegisterCubit>(context, listen: true);
+    RegisterCubit registerCubit =
+        BlocProvider.of<RegisterCubit>(context, listen: true);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -33,8 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(MyAssets.top)),
+                      fit: BoxFit.cover, image: AssetImage(MyAssets.top)),
                 ),
                 child: const Column(
                   children: [
@@ -63,17 +61,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       isPassword: false,
                       textEditingController: registerCubit.emailController,
                       textInputType: TextInputType.emailAddress,
-                      label: 'E-mail',validator: (val){
-                      if(val!.isEmpty){
-                        return 'enter your e-mail';
-                      }
-                      else if (!RegExp(validationEmail)
-                          .hasMatch(val.trim())) {
-                        return 'email is not valid!';
-                      } else {
-                        return null;
-                      }
-                    },
+                      label: 'E-mail',
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return 'enter your e-mail';
+                        } else if (!RegExp(validationEmail)
+                            .hasMatch(val.trim())) {
+                          return 'email is not valid!';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 32,
@@ -83,18 +81,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       isPassword: registerCubit.isOb,
                       textInputType: TextInputType.visiblePassword,
                       label: 'Password',
-                      suffixIcon: registerCubit.isOb ? CupertinoIcons.eye_slash: CupertinoIcons.eye,
-                      suffixPressed: (){
+                      suffixIcon: registerCubit.isOb
+                          ? CupertinoIcons.eye_slash
+                          : CupertinoIcons.eye,
+                      suffixPressed: () {
                         setState(() {
                           registerCubit.isOb = !registerCubit.isOb;
                         });
                       },
-                      validator: (val){
-                        if(val!.isEmpty){
+                      validator: (val) {
+                        if (val!.isEmpty) {
                           return 'enter your password';
-                        }
-                        else if (!RegExp(validationPassword)
-                            .hasMatch(val)) {
+                        } else if (!RegExp(validationPassword).hasMatch(val)) {
                           return 'password is not valid!';
                         } else {
                           return null;
@@ -105,41 +103,67 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       height: 32,
                     ),
                     CustomTextFormField(
+                      textEditingController: registerCubit.cPasswordController,
                       isPassword: true,
                       textInputType: TextInputType.visiblePassword,
                       label: 'Confirm Password',
-                      validator: (val){
-                        if(val!.isEmpty){
+                      validator: (val) {
+                        if (val!.isEmpty) {
                           return 'confirm your password';
                         }
-                        if(val != registerCubit.passwordController.text){
+                        if (val != registerCubit.passwordController.text) {
                           return 'password doesn\'t match';
                         }
                       },
                     ),
-                    const SizedBox(height: 64,),
-                    CustomButton(text: 'Sign up',onPressed: (){
-                      if(registerCubit.formKey.currentState!.validate()){
-
-                      }
-                    },),
+                    const SizedBox(
+                      height: 64,
+                    ),
+                    CustomButton(
+                      text: 'Sign up',
+                      onPressed: () {
+                        if (registerCubit.formKey.currentState!.validate()) {
+                          registerCubit.register(
+                              name: 'name',
+                              phone: 'phone',
+                              email: registerCubit.emailController.text,
+                              password: registerCubit.passwordController.text,
+                              confirmPassword: registerCubit.cPasswordController.text,
+                              location: 'location',
+                              brandName: 'brandName',
+                              minCharge: 'minCharge',
+                              disc: 'disc');
+                        }
+                      },
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Already have an account?',style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),),
-                        TextButton(onPressed: (){
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen(),));
-                        }, child: const Text('Sign In',style: TextStyle(
-                          color: MyColors.mainColor,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                        ),))
+                        const Text(
+                          'Already have an account?',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ));
+                            },
+                            child: const Text(
+                              'Sign In',
+                              style: TextStyle(
+                                color: MyColors.mainColor,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
+                            ))
                       ],
                     )
                   ],
